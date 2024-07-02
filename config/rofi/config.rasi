@@ -1,0 +1,23 @@
+configuration {
+    font: "JetBrainsMono Nerd Font 13";
+    line-margin: 10;
+
+    display-ssh:    " ";
+    display-run:    " ";
+    display-drun:   " ";
+    display-window: " ";
+    display-combi:  " ";
+    show-icons:     true;
+}
+
+
+@theme "/home/monte/.config/rofi/gruvbox-dark.rasi"
+
+listview {
+	lines: 10;
+	columns: 1;
+}
+
+window {
+	width: 40%;
+}

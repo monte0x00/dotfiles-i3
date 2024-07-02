@@ -1,0 +1,166 @@
+################################
+#                              #
+#   config i3wm by monte0x00    #
+#                              #
+# https://github.com/monte0x00 #
+#                              #
+################################
+
+#run i3wm
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock --nofork
+
+#run nm-applet
+exec --no-startup id nm-applet
+
+#restart i3wm
+bindsym $mod+Shift+r restart
+
+#holy mother key
+set $mod Mod4
+
+###########
+#         #
+# screens #
+#         #
+###########
+
+#background feh
+exec --no-startup-id feh --bg-scale '/usr/share/backgrounds/sayori.png'
+
+#2 screen configuration xrandr
+exec xrandr --output DVI-D-0 --off --output HDMI-A-0 --mode 1920x1080 --rate 60.000 --pos 1683x0 --rotate normal --output DisplayPort-0 --mode 1680x1050 --rate 60.000 --pos 0x98 --rotate normal
+
+#########
+#       #
+# style #
+#       #
+#########
+
+#fuente de texto
+font pango:JetBrainsMono Nerd Font
+
+#bordes para las ventanas
+gaps inner 20
+gaps outer 0
+smart_gaps on
+smart_borders on
+
+#focus de las ventanas
+client.focused #000000 #458588 #000000 #458588
+
+for_window [class="^.*"] border pixel 3
+new_window pixel 3
+
+###################
+#                 #
+# startup program #
+#                 #
+###################
+
+#run picom
+exec picom
+
+#run polybar
+exec polybar
+
+#####################
+#                   #
+# program shortcuts #
+#                   #
+#####################
+
+#shortcut screenshot
+bindsym Print exec maim -s -u "/home/$USER/$(date)" | xclip -selection clipboard -t image/png -i
+
+#shortcut alacritty
+bindsym $mod+t exec alacritty
+
+#shortcut pcmanfm
+bindsym $mod+e exec pcmanfm
+
+#run rofi
+bindsym $mod+a exec --no-startup-id rofi -show drun
+
+#run power menu rofi
+bindsym $mod+Shift+q exec rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu
+
+##################
+#                #
+# i3wm shortcuts #
+#                #
+##################
+
+#kill focused window
+bindsym $mod+q kill
+
+#fullscreen window
+bindsym $mod+f fullscreen toggle
+
+#floating window
+bindsym $mod+space floating toggle
+floating_modifier $mod
+
+#window focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+#move windows
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+#volume shortcuts
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+##############
+#            #
+# workspaces #
+#            #
+##############
+
+#workspaces name
+set $ws1 I
+set $ws2 II
+set $ws3 III
+set $ws4 IV
+set $ws5 V
+set $ws6 VI
+set $ws7 VII
+set $ws8 VIII
+set $ws9 IX
+set $ws0 X
+
+#switch workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+
+#move workspaces
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+
+
+#
