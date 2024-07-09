@@ -61,9 +61,6 @@ new_window pixel 3
 #run picom
 exec picom
 
-#run polybar
-exec polybar
-
 #####################
 #                   #
 # program shortcuts #
